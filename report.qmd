@@ -17,22 +17,51 @@ library(ggplot2)
 
 ## **Part 1:** **Defining Research Question**
 
-Chosen Question:
+Chosen Question: Are there more EV registered vehicles in states with higher total energy used?
 
 ## **Part 2: Data Preparation and Cleaning**
 
 ```{r}
+re_2021 <- read_csv("renew_use_2021.csv")
+re_2022 <- read_csv("renew_use_2022.csv")
+re_2023 <- read_csv("renew_use_2023.csv")
+
+energy_2021 <- read_csv("total_energy_2021.csv")
+energy_2022 <- read_csv("total_energy_2022.csv")
+energy_2023 <- read_csv("total_energy_2023.csv")
+
+energy_price <- read_csv("av_energy_price_2021-2023.csv")
+registration <- read_csv("ev_registrations-by_state_2023.csv")
+
+re_2021 <- re_2021 %>%
+  rename(
+      state = State)
 
 ```
 
 ## **Part 3: Joining / Pivoting Datasets for Analysis**
 
 ```{r}
+renew <- renew_wide |>
+  pivot_longer(
+    cols
+    names_to = "year"
+) |>
+mutate(year = as.integer(year))
+
+energy <- energy_wide |>
+  inner_join(energy, by = c("year")) |>
 
 ```
 
 ## **Part 4: Mapping Visualization**
 
 ```{r}
-
+ggplot(us_states, aes(x = long, y= lat)) +
+geom_map(
+  energy_ev)
+aes(state),
+color = "white" +
+labs(
+title = "U.S. Renewable Energy Use by State and Year")
 ```
