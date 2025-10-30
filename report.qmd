@@ -8,7 +8,11 @@ format: typst
 ## **Part 0: libraries**
 
 ```{r}
-
+library(tidyverse)
+library(lubridate)
+library(leaflet)
+library(sf)
+library(ggplot2)
 ```
 
 ## **Part 1:** **Defining Research Question**
